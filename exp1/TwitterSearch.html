@@ -1,0 +1,54 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href=design.css>
+
+    <title>Tweet Screen</title>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	function TweetAra(query) {
+    $.ajax({
+        url: 'http://search.twitter.com/search.json?' + jQuery.param(query),
+        dataType: 'jsonp',
+        success: function(data) {
+            var tweets = $('#sonuc');
+            tweets.html('');
+            for (out in data['results']) {
+			    var $resim = data['results'][out]['profile_image_url']
+                tweets.append('<img src="'+$resim+'" border =1 align="left">'+
+				' <B>'+data['results'][out]['from_user_name']+'</B>'+
+				'<i> @'+data['results'][out]['from_user'] +
+				' ('+data['results'][out]['created_at']+ ')</i>'+
+				'<p>' + data['results'][out]['text'] + '</p>'+'<p>'+ 
+				'--------------------------------------------------------------------------------------------------------'+'</p>');
+				
+        }
+       }		
+    });
+}
+
+$(document).ready(function() {
+    $('#search').click(function() {
+           argument = { q: $('#sorgu').val(), rpp: 5 };
+           TweetAra(argument);
+    });
+});
+
+var myVar = setInterval(function(){TweetAra(argument)},10000);
+
+</script>
+</head>
+
+<body background="twitterpic.jpg">
+   <div id="arama">
+     <center>  
+        <h2>TWEET SEARCH ENGINE</h2>
+        <input id="sorgu" type="text" size="30" value="">
+		<input id="search" type="button" value="Search!" >
+	  </center>
+    </div>
+    <div id="sonuc">
+        No tweet
+    </div>
+</body>
+</html>

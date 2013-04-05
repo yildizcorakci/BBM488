@@ -1,0 +1,33 @@
+#sonuc{
+padding-top:20px;
+margin-top :5px;
+margin-left:380px;
+border:6px solid orange;
+background-color:LightBlue;
+width :600px;
+height :500px
+}
+#arama{
+margin-left:380px;
+border:6px solid orange;
+background-color:LightBlue;
+width :600px;
+height :100px
+}
+img{
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+margin-left :25px;
+margin-top: 5px;
+}
+p{
+margin-left: 35px;
+margin-top :5px;
+font-family:Arial;
+font-size :14px;
+}
+h2{
+color:DarkBlue;
+}
+
